@@ -12,13 +12,8 @@ ConnectDatabase();
 
 app.use(express.json());
 
-const router = express.Router();
 
-
-router.get("/employer", EmployerLogin);
-
-app.use('/api', router); 
-
+app.use('/api',EmployerLogin)
 app.listen(port, () => {
     console.log(`The server is listening on port: ${port}`);
 });
