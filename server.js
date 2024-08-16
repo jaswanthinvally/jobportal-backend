@@ -1,24 +1,20 @@
-
+const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
+const ConnectDatabase = require('./Database/Db');
+const Userrouter = require('./routes/Userroutes');
 
-const express = require('express');
-const ConnectDatabase = require('./Database/Db.js');
 const app = express();
-const port = process.env.PORT
-ConnectDatabase();
+const port = process.env.PORT || 3000;
 
-const Userroutes = require('./routes/Userroutes.js')
-
+// Middleware
 app.use(express.json());
 
-
-app.use('/api',Userroutes)
-
-
+// Routes
+app.use("/api/v1", Userrouter);
 
 
+app.listen(port, () => console.log("Server is running on port:", port));
 
-app.listen(port, () => {
-    console.log(`The server is listening on port: ${port}`);
-});
+
+ConnectDatabase();

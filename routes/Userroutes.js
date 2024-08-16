@@ -1,8 +1,7 @@
 const express = require('express');
-const { Usercontroller } = require('../controllers/Usercontrollers.js');
+const Usercontrollers = require('../controllers/Usercontrollers');
 const router = express.Router();
 
-
-router.post('/employe', Usercontroller);
+router.route('/user').post(Usercontrollers.Usercontrollers);
 
 module.exports = router;
