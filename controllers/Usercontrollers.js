@@ -1,8 +1,11 @@
-const UserModel = require('../models/Usermodels.js');
+const Usermodel = require("../models/Usermodels")
 
-exports.Createuser = (req, res, next) => {
-    const { name, emailid, password } = req.body;
-    UserModel.create({ name, emailid, password })
-        .then(() => res.json({message : "user created sucesfully", status: "success" }))
-        .catch(err => res.status(500).json({ message: "failure", error: err.message }));
-};
+
+exports.Createuser = (req,res) => {
+    const {name, email, password, role, profile} = req.body
+    Usermodel.create({
+        name,email,password,role,profile
+    })
+    .then((result) => res.send("user created sucessfully",result) )
+    .catch((err) => console.log("user creation failed",err))
+}
