@@ -6,6 +6,12 @@ exports.Createuser = (req,res) => {
     Usermodel.create({
         name,email,password,role,profile
     })
-    .then((result) => res.send("user created sucessfully",result) )
-    .catch((err) => console.log("user creation failed",err))
+    .then((result) => res.json({
+        status : "user creation sucessful",
+        result
+    }) )
+    .catch((err) => res.json({
+        status : "user creation failed",
+        err
+    }))
 }
